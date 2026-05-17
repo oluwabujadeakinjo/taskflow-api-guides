@@ -8,28 +8,28 @@ This repository contains setup, deployment, onboarding, and monitoring documenta
 # Documentation
 
 ## Onboarding
-- [Developer onboarding guide]()
+- [Developer onboarding guide](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/onboarding/Onboarding%20Docs.md)
 
 Introduces new developers to the TaskFlow API ecosystem, development workflow, authentication flow, and operational processes.
 
 ---
 
 ## Setup
-- [Installation guide]()
+- [Installation guide](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/setup/installation.md)
 
 Explains how to install dependencies, configure environment variables, and run TaskFlow API locally.
 
 ---
 
 ## Deployment
-- [Deployment guide]()
+- [Deployment guide](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/deployment/deployment.md)
 
 Covers Docker deployment, PM2 process management, deployment verification, troubleshooting, and production recommendations.
 
 ---
 
 ## Operations
-- [Monitoring and logging]()
+- [Monitoring and logging](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/operations/monitoring%20and%20logging.md)
 
 Explains how to monitor API health, inspect logs, diagnose failures, and identify operational issues.
 
