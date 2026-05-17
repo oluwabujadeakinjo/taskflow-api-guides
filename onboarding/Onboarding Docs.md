@@ -286,3 +286,18 @@ git checkout -b feature/task-filtering
 |[Monitoring guide]()|Logging and observability workflows|
 |[Error handling documentation]()|Common API errors and responses|
 
+---
+## Next steps
+After completing onboarding, you should be able to:
+- run TaskFlow API locally;
+- authenticate requests;
+- inspects logs;
+- monitor service health; and
+- troubleshoot common operational issues.
+---
+Recommended next topics:
+- [deployment workflows]();
+- [monitoring and observability]();
+- [scaling infrastructure]();
+- [CI/CD automation]();
+- [incident response procedures]().
