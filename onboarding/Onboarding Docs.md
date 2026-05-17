@@ -2,6 +2,8 @@
 ## Overview
 Welcome to the TaskFlow API oboarding guide.
 
+---
+
 This document introduces developers to the TaskFlow API ecosystem and explains how to:
 - understand the platform architectue;
 - install and configure the API locally;
@@ -12,6 +14,8 @@ This document introduces developers to the TaskFlow API ecosystem and explains h
 - begin contributing to the development workflow.
 
 By the end of this guide, you should be able to run TaskFlow API locally, interact with protected endpoints, and understand the operational workflow used in development and production environments.
+
+---
 
 ## TaskFlow API
 TaskFlow API is a REST API designed for:
