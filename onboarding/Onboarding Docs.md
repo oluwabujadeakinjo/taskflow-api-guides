@@ -256,7 +256,7 @@ git checkout -b feature/task-filtering
 |------------|-----------|
 |[API reference documentation]()|Endpoint specifications|
 |[Deploypment guide](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/deployment/deployment.md)|Production deployment workflow|
-|[Monitoring guide]()|Logging and observability workflows|
+|[Monitoring guide](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/operations/monitoring%20and%20logging.md)|Logging and observability workflows|
 
 ## Next steps
 Now that you have complet onboarding, you should be able to:
