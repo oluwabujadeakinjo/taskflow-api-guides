@@ -5,6 +5,12 @@ This repository contains setup, deployment, onboarding, and monitoring documenta
 
 # Documentation
 
+## api-references
+- [API endpoints]()
+- [Error handling guides]()
+
+Details the endpoints available and outlines the standardized framework used by the TaskFlow API.
+
 ## Onboarding
 - [Developer onboarding guide](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/onboarding/Onboarding%20Docs.md)
 
@@ -45,7 +51,8 @@ The following operational guides are currently in progress:
 taskflow-api-guides/
 │
 ├── api-reference/
-|  └── task-endpoints.md
+|  ├── task-endpoints.md
+|  └── error-handling-guide.md
 |
 ├── onboarding/
 |   └── onboarding.md
