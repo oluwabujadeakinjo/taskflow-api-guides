@@ -268,5 +268,5 @@ Now that you have complet onboarding, you should be able to:
 
 Recommended next topics:
 - [scaling infrastructure]();
-- [CI/CD automation]();
+- [CI/CD automation](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/deployment/ci-cd-automation.md);
 - [incident response procedures]().
