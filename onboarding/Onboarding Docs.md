@@ -1,49 +1,32 @@
 # TaskFlow API onboarding guide
----
-## Overview
-Welcome to the TaskFlow API oboarding guide.
+Welcome to the TaskFlow API onboarding guide.
+This document introduces new developers to the TaskFlow API ecosystem. Use this guide to:
 
----
+- undertand system architecture;
+- configure local development environments;
+- authenticate requests; and
+- integrate changes into the core database.
 
-This document introduces developers to the TaskFlow API ecosystem and explains how to:
-- understand the platform architectue;
-- install and configure the API locally;
-- authtenticate requests;
-- test endpoints;
-- inspect logs;
-- troubleshoot common issues; and
-- begin contributing to the development workflow.
+By the end of this guide, you will be able to: 
+- run the TaskFlow API locally;
+- interact with protected endpoints; and
+- navigate the standard development workflow.
 
-By the end of this guide, you should be able to run TaskFlow API locally, interact with protected endpoints, and understand the operational workflow used in development and production environments.
+## Platform overview
+TaskFlow API is a REST API designed for the following core workflows:
+- Task management and life cycle tracking
+- User token-based authentication
+- Project collaboration and ownership assignment
+- System activity tracking and performance metrics
 
----
-
-## TaskFlow API
-TaskFlow API is a REST API designed for:
-- task management;
-- user authentication;
-- project collaboration;
-- activity tracking; and
-- workflow automation.
----
-It exposes endpoints to allow client application:
-- create and manage tasks;
-- authenticate users;
-- organize projects;
-- assign responsibilities;
-- track progress; and
-- monitor application health.
----
-
-It follows a client-server procedure where:
-1. Client applications send HTTP requests;
-2. The API processes business logic;
-3. PostgreSQL stores persistent data; and
-4. JSON responses are returned to clients.
----
+It operates on a client-server model where:
+1. Client applications send HTTP requests to exposed endpoints
+2. The API server processes requests against core workflows
+3. PostgreSQL stores persistent data
+4. The server returns JSON responses are returned to client applications
 
 ## System architecture overview
-The TaskFlow platform contains the following core components:
+The TaskFlow platform relies on these structural components:
 
 |**Component**|**Responsibility**|
 |-------------|------------------|
@@ -52,37 +35,37 @@ The TaskFlow platform contains the following core components:
 |PM2|Manages Node.js application processes|
 |Docker|Provides containerized deployment environments|
 |Monitoring services|Tracks uptime, logs, and application health|
----
 
 ## Development workflow
-The standard development workflow follows this sequence:
-1. Clone the repository;
-2. Install project dependencies;
-3. Configure environment variables;
-4. Start PostgreSQL;
-5. Run the API locally;
-6. Test endpoints using cURL; and
-7. Monitor logs and application health.
----
+The standard development workflow follows this step-by-step procedures:
+1. Clone the master repository branch locally.
+2. Install underlying project dependencies using package managers.
+3. Establish localized environment variables.
+4. Initialize the background database instance.
+5. Launch the local API runtime service.
+6. Verify endpoint responses using command-line interface tools.
+7. Track live application behavior through runtime logging outputs.
+
 ## Prerequisites
-Before starting, ensure the following tools are installed:
+Ensure your local workstation has the following dependencies installed before beginning setup:
 - Node.js 18+
 - PostgreSQL 14+
 - Docker
 - PM2
 - Git
 - cURL
+
+Operational workflow requirements:
+- Terminal emulator access with administrative command permissions
+- Active network access for pulling remote dependency structures
+- A code editor or integrated development environment (IDE)
+
 ---
-You also need:
-- terminal access;
-- administrator permissions;
-- internet connectivity; and
-- a text editor.
----
+
 ## Install and configure TaskFlow API locally
----
+
 ### Step 1: Clone the repository
-Clone the TaskFlow API repository from GitHub:
+Clone the TaskFlow API repository from your version control workspace:
 
 ```Bash
 git clone https://github.com/example/taskflow-api.git
@@ -101,16 +84,14 @@ Install all required project dependencies:
 npm install
 ```
 > This command installs packages defined in the `package.json` file.
----
+
 ### Step 3: Configure environment variables
-**Copy the environment file**
+Copy the environment file:
 
 ```Bash
 cp .env.example .env
 ```
----
-**Configure the variables**
-Open the `.env` file and update the following variables:
+Open the newly created `.env` file and update the following variables:
 
 |**Variables**|**Description**|
 |-------------|---------------|
@@ -119,50 +100,49 @@ Open the `.env` file and update the following variables:
 |`JWT_SECRET`|Secret used to sign authentication tokens|
 |`NODE_ENV`|Application environment (`development` or `production`)|
 
----
-Example:
+Configuration structure example:
 ```Bash
 PORT = 3000
 DB_URL = postgresql://user:password@localhost:5432/taskflow
 JWT_SECRET = super_secret_key
 NODE_ENV = development
 ```
-> **Security note:** Never commit `.env` files to version control systems.
----
-### Step 4: Start PostgreSQL
+> **Security note:** Never commit `.env` files to version control workspaces.
+
+### Step 4: Initialize the database service
 Ensure the PostgreSQL service is running before starting the API:
 
 ```Bash
 sudo systemctl start postgresql
 ```
----
+
 Verify the service status:
 
 ```Bash
 sudo systemctl status postgresql
 ```
----
+
 ### Step 5: Start the API server
 Launch the application in development mode:
 
 ```Bash
 npm run dev
 ```
----
+
 Expected output:
 
 ```Bash
 Server running on http://localhost:3000
 Database connection established successfully
 ```
----
-### Verify API health
+
+### Step 6: Verify API health
 Send a request to the health endpoint to verify the service is operational:
 
 ```Bash
 curl http://localhost:3000/health
 ```
----
+
 Expected response:
 
 ```JSON
@@ -172,16 +152,13 @@ Expected response:
     "uptime_seconds": "172800"
 }
 ```
----
+
 ### Step 7: Authentiicate requests
-TaskFlow API uses token-based authentication.
+TaskFlow API secures endpoints using JSON Web Token (JWT) parameter validations. Dispatched user credentials generate short-lived tokens.
 
----
-**Endpoint:**
-`POST /auth/login`
+- **Endpoint:** `POST /auth/login`
 
----
-**Request:**
+Send an authentication login request, using command-line quesry strings:
 
 ```Bash
 curl -X POST http://localhost:3000/auth/login \
@@ -191,7 +168,7 @@ curl -X POST http://localhost:3000/auth/login \
     "password": "strong_password"
 }'
 ```
----
+
 **Expected response:**
 
 ```JSON
@@ -200,7 +177,7 @@ curl -X POST http://localhost:3000/auth/login \
     "expires_in": 3600
 }
 ```
----
+
 ### Step 8: Access protected endpoints
 Use the generated token in subsequent requests:
 
@@ -208,93 +185,89 @@ Use the generated token in subsequent requests:
 curl -X GET http://localhost:3000/tasks \
 -H "Authorization: Bearer <access_token>"
 ```
----
+> The generated token is passed directly into the request headers of subsequesnt requests.
+
 ### Step 9: Monitor logs and application health
-**PM2 Monitoring**
+**Process monitoring with PM2**
 View managed processes:
 
 ```Bash
 pm2 status
 ```
----
 Enable the real-time monitoring dashboard:
 
 ```Bash
 pm2 monit
 ```
----
-View logs:
+Stream logs continually:
 
 ```Bash
 pm2 logs taskflow-api
 ```
----
-**Docker logs**
+
+**Container monitoring with Docker**
 List running containers:
 
 ```Bash
 docker ps
 ```
----
+
 View container logs:
 
 ```Bash
 docker logs <container-id>
 ```
----
-## Error handling
-See the table below for common troubleshooting scenarios:
 
-|**Issue**|**Possible Cause**|**Solution**|
+## Troubleshooting operational errors
+See the table below for standard local compilation faults:
+
+|**Issue**|**Root Cause**|**Solution**|
 |---------|------------------|------------|
-|API fails to start|Missing environment variables|Verify `.env` configuration|
-|Database connection refused|PostgreSQL service offline|Restart PostgreSQL|
-|Authentication fails|Invalid credentials|Verify username and password|
-|Port already in use|Another service occupies port `3000`|Change the `PORT` variable|
-|Container exits immediately|Invalid startup command|Inspect Docker logs|
+|**API fails to start**|Missing environment variables|Verify `.env` configuration|
+|**Database connection refused**|PostgreSQL service offline|Restart PostgreSQL|
+|**Authentication fails**|Invalid credentials|Verify username and password|
+|**Port already in use**|Another service occupies port `3000`|Change the `PORT` variable|
+|**Container exits immediately**|Invalid startup command|Inspect Docker logs|
 
----
 ## Recommended security practices
-Follow these recommendations when working with TaaskFlow API:
-- Use HTTPS in production environments.
-- Avoid hardcoding credentials.
-- Restrict database access.
-- Rotate authentication secrets periodically.
-- Restrict access to logs and environment files.
-- Monitor failed authentication attempts.
----
-## Contribution workflow
+Follow these recommendations when working with TaskFlow API:
+- Use HTTPS in production environments
+- Avoid hardcoding credentials
+- Restrict database access
+- Rotate authentication secrets periodically
+- Restrict access to logs and environment files
+- Monitor failed authentication attempts
+
+## Core contribution procedures
 Developers contributing to TaskFlow API should follow this workflow:
-1. Pull the latest changes;
-2. Create a feature branch;
-3. Implement changes;
-4. Test functionality locally; and
-5. Submit a pull request.
----
-Pull request example:
+1. Pull the latest changes from the origin development main branch.
+2. Initialize separate descriptive feature tracking branches (`git checkout -b feature/name`).
+3. Run technical logic updates and structural modifications within working directories.
+4. Execute localized verification health testing checks to ensure stability.
+5. Open up a formal code pull request for architectural code evaluations.
+
+Branch initialization standard formatting example:
 
 ```Bash
 git checkout -b feature/task-filtering
 ```
----
-## Additional resources
+
+## Additional support documentation
 
 |**Resource**|**Purpose**|
 |------------|-----------|
 |[API reference documentation]()|Endpoint specifications|
 |[Deploypment guide]()|Production deployment workflow|
 |[Monitoring guide]()|Logging and observability workflows|
-|[Error handling documentation]()|Common API errors and responses|
 
----
 ## Next steps
-After completing onboarding, you should be able to:
+Now that you have complet onboarding, you should be able to:
 - run TaskFlow API locally;
 - authenticate requests;
 - inspects logs;
 - monitor service health; and
 - troubleshoot common operational issues.
----
+
 Recommended next topics:
 - [deployment workflows]();
 - [monitoring and observability]();
