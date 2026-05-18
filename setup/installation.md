@@ -90,5 +90,5 @@ If the application fails to start, check the table below for common configuratio
 ## Next steps
 Now that the local TaskFlow API is running smoothly, continue building out your platform knowledge using the following technical resources:
 * Read the [**Developer onboarding guide**](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/onboarding/Onboarding%20Docs.md) to explore application design frameworks and core architectures.
-* Reference the [**Production deployment guide**](authentication.md) to manage system deployments using containerized platforms like **Docker** or **PM2**.
-* Review the [**Monitoring and logging guide**](deployment.md) to establlish live metric tracing workflows on application infrastructure.
+* Reference the [**Production deployment guide**](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/deployment/deployment.md) to manage system deployments using containerized platforms like **Docker** or **PM2**.
+* Review the [**Monitoring and logging guide**](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/operations/monitoring%20and%20logging.md) to establlish live metric tracing workflows on application infrastructure.
