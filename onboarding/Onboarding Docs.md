@@ -282,7 +282,7 @@ git checkout -b feature/task-filtering
 |**Resource**|**Purpose**|
 |------------|-----------|
 |[API reference documentation]()|Endpoint specifications|
-|[Development guide]()|Production deployment workflow|
+|[Deploypment guide]()|Production deployment workflow|
 |[Monitoring guide]()|Logging and observability workflows|
 |[Error handling documentation]()|Common API errors and responses|
 
