@@ -1,42 +1,48 @@
 # Installing and configuring TaskFlow API using Bash
 
-Install and configure the TaskFlow REST (Representational State Transfer) API using Bash. This process ensure security by implementing a local version control loop.
+This guide walks you through cloning, configuring, and executing a localized installation of the TaskFlow REST API within a Unix-like shell emvironment.
 
 ## Prerequisites
-You need:
+Ensure your development workspace has the following dependencies:
 * Node.js 18+
 * PostgreSQL 14+
-* Git
-* A text editor
+* Git command-line interface
+* A terminal interface and text editor
 
 ## Step 1: Clone the repository
-Invoke Git and clone the repository from Github:
+Clone the master project codebase from GitHub into your local working directory:
 
 ```Bash
 git clone https://github.com/example/taskflow-api.git
 ```
+Navigate into the root repository workspace folder:
 
-## Step 2: Install dependencies
-Install using the `npm` package manager:
+```Bash
+cd taskflow-api
+```
+
+## Step 2: Install project dependencies
+Initialize the node package manager (`npm`) to pull down backend dependencies defined within the core runtime engine layout:
 
 ```Bash
 # install the repository
 npm install 
 ```
-> This installs all dependencies listed in `package.json`.
+> **Note:** This command reviews the project's `package.json` file to download and link required sub-modules.
 
 ## Step 3: Configure environment variables
-TaskFlow API uses environment variables to manage sensitive configurations. Instead of hardcoding these values, store them in a hidden file named `.env`.
+TaskFlow API handles sensitive infrastucture parameters through runtime environment adjustments. Save these configurations locally inside an isolated, hidden file named `.env`.
 
-### Create the .env file
-Create a new file in the root directory of the project:
+### Create the .env configuration file
+Generate your localized environment file by duplicating the provided upstream configuration template:
 
 ```Bash
 # Replace .env.example with your file name
 cp .env.example .env
 ```
-### Edit the configuration
-Open the `.env` file in your text editor and update the following fields:
+
+### Edit file configurations
+Open the local `.env` properties layout inside a text editor and adjust the target variables to reflect your workstation setup:
 
 |**Variable**|**Default Value**|**Description**|
 |------------|-----------------|---------------|
@@ -45,7 +51,7 @@ Open the `.env` file in your text editor and update the following fields:
 |`JWT_SECRET`|`your_super_secret_key`|Secret key for signing tokens|
 > **Security tip:** Never commit your `.env` file to version control. Ensure it is listed in your `.gitignore` file to prevent leaking credentials to GitHub.
 
-## Step 4: Start the server
+## Step 4: Launch the local server
 Launch the application in development mode:
 
 ```Bash
@@ -57,13 +63,13 @@ The terminal displays the active port and database connection status:
 > - `Database connection established successfully`
 
 ## Step 5: Verify installation
-Use `curl` to confirm the API is responding correctly by sending a request the health check endpoint:
+Validate the API's responsiveness by sending a request the health endpoint:
 
 ```Bash
 # ping the health check endpoint
 curl http://localhost:3000/health
 ```
-**Expected response:**
+**Expected JSON payload response:**
 ```JSON
 {
     "status": "ok",
@@ -72,17 +78,17 @@ curl http://localhost:3000/health
 }
 ```
 
-## Step 6: Troubleshooting
-If the application fails to start, check for these common configuration issues:
+## Step 6: Troubleshooting installation errors
+If the application fails to start, check the table below for common configuration issues:
 
-|**Description**|**Solution**|
-|--------------|--------------|
-|**Port already in use**|If port `3000` is occupied, change the `PORT` variable in your `.env` file to an available port.|
-|**Database connection failed**|Ensure PostgreSQL is running and your `DB_URL` in the `.env` file matches your local credentials.|
-|**Missing environment variables**|If the server fails to start, verify that your `.env` file contains all the variables listed in the `.env.example` template.|
+|**Description**|**Root cause**|**Solution**|
+|---------=-----|----------------|------------|
+|**Port already in use**|Port `3000` is occupied|Change the `PORT` variable in your `.env` file to an available port.|
+|**Database connection failed**|The server cannot connect with the PostgreSQL background process|Ensure PostgreSQL is running and your `DB_URL` in the `.env` file matches your local credentials.|
+|**Missing environment variables**|The process crashes on launch|If the server fails to start, verify that your `.env` file contains all the variables listed in the `.env.example` template.|
 
 ## Next steps
-Now that the TaskFlow API is running locally, you can explore the following resources to build your application:
-* Check the [**API Endpoint Reference**](apireference.md) to view the full list of all available REST endpoints and parameters.
-* Check the [**Authentication Guide**](authentication.md) to learn how to generate and use JWT tokens for secured routes.
-* Go through the [**Deployment Documentation**](deployment.md) for instructions for moving your TaskFlow instance from a local environment to a production server using **Docker** or **PM2.**
+Now that the local TaskFlow API is running smoothly, continue building out your platform knowledge using the following technical resources:
+* Read the [**Developer onboarding guide**](apireference.md) to explore application design frameworks and core architectures.
+* Reference the [**Production deployment guide**](authentication.md) to manage system deployments using containerized platforms like **Docker** or **PM2**.
+* Review the [**Monitoring and logging guide**](deployment.md) to establlish live metric tracing workflows on application infrastructure.
