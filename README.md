@@ -7,7 +7,7 @@ This repository contains setup, deployment, onboarding, and monitoring documenta
 
 ## api-references
 - [Task endpoints](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/api-reference/task-endpoints.md)
-- [Error handling guides](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/api-reference/task-endpoints.md)
+- [Error handling guide](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/api-reference/task-endpoints.md)
 
 Details the endpoints available and outlines the standardized framework used by the TaskFlow API.
 
