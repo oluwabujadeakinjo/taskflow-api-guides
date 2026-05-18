@@ -142,4 +142,4 @@ When an API call fails, the server responds with a standardized JSON schema.
 }
 ```
 
-Review the full error portfolio inside the [**Error handling guide**]().
+Review the full error portfolio inside the [**Error handling guide**](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/api-reference/error-handling-guide.md).
