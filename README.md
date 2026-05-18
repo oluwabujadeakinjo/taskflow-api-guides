@@ -44,8 +44,11 @@ The following operational guides are currently in progress:
 ```TEXT
 taskflow-api-guides/
 │
+├── api-reference/
+|  └── task-endpoints.md
+|
 ├── onboarding/
-|  └── onboarding.md
+|   └── onboarding.md
 |
 ├── setup/
 |   └── installation.md
