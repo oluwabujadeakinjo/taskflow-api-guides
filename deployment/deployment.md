@@ -1,26 +1,29 @@
 # Deploying TaskFlow API to production
 
-Configure and deploy the TaskFlow API using Docker and PM2. This process ensures functionality by thorough error diagnosis and prevention.
+Configure and deploy the TaskFlow API to a production environment. This guide offers two alternative development pathways:
+- containerization using Docker
+- process management using PM2
 
 ## Prerequisites
-* Linux server
+Before deploying, ensure your server has the following dependencies installed:
+* Linux server (Ubuntu 22.04 LTS or similar)
 * Node.js 18+
-* Docker
+* Docker Engine
 * Git
 * Project Manager 2 (PM2)
 * PostgreSQL 14+
-* Environment variables configured
+* A configured `.env` file (see step 2)
 
 ## Step 1: Clone the repository
-Invoke Git and clone the repository:
+Clone the project repository from GitHub to your local server directory:
 
 ```Bash
 # Use the clone command to clone the repo from GitHub
 git clone https://github.com/example/taskflow-api.git
 ```
 
-## Step 2: Configure environment repository
-TaskFlow API uses environment variables to manage sensitive configurations. Store them in a hidden file named `.env`.
+## Step 2: Configure environment variables
+TaskFlow API uses environment variables to manage sensitive configurations (such as database credentials and application states.) Store these configurations in a secure `.env` file in the project root.
 
 ### Create the .env file
 Create a new file in the root directory of the project:
@@ -40,23 +43,26 @@ Open the `.env` file in your text editor and update the following fields:
 |`JWT_SECRET`|`your_super_secret_key`|Secret key for signing tokens.|
 |`NODE_ENV`|`development`|Dictates the environment state. Set it to `production`.|
 
-## Step 3: Deploy using Docker
-Create and launch the application in a container, using the `docker build` and `docker run` commands.
+## Step 3: Choose a deployment method
+Select one of the following production deployment strategies:
 
-### Create a docker image
-Use `docker build` to create a template (Image):
+### Option A: Deploy using Docker
+Containerization bundles the application code with its specific dependencies to ensure consistent behavior across environments.
+
+**1. Build the docker image**
+Run `docker build` to create a template image named `taskflow-api`:
 
 ```Bash
 docker build -t taskflow-api .
 ```
-### Create and start a container
-Use `docker run` to create and start a new container from an image:
+**2. Start the container**
+Run `docker run` to launch a cotainer instance:
 
 ```Bash
 docker run -d -p 3000:3000 taskflow-api
 ```
 
-### Command breakdown
+**Docker command breakdown**
 
 |**Command/Flag**|**Description**|
 |----------------|---------------|
@@ -67,26 +73,26 @@ docker run -d -p 3000:3000 taskflow-api
 |`-d`|Runs the container in the background|
 |`-p 3000:3000`|Maps your computer's port to the container's port. The first `3000` is the port on your machine|
 
-## Step 4: Deploy using PM2
-Ensure the application stays online indefinitely and utilizes all available system resources.
+### Option B: Deploy using PM2
+PM2 is a production process manager that keeps the application online indefinitely and utilizes all available system resources.
 
-### Launch the application
-Use `PM2` to launch the application and give it a specific name:
+**1. Launch the application process**
+Run `PM2` to launch the application and give it a distinct name (`taskflow-api`):
 
 ```Bash
 # Run server.js and name the process taskflow-api
 pm2 start server.js --name taskflow-api
 ```
 
-### Check the application status
-Use `pm2 status` to know if your application is online:
+**2. Verify process status**
+Run `pm2 status` to review the live status of application instances:
 
 ```Bash
 pm2 status
 ```
 
-## Step 5: Verify deployment
-Send a request to the health endpoint to verify that the service is operational:
+## Step 4: Verify the deployment
+Send a request to the `/health` endpoint to ensure the service is operational:
 
 ```Bash
 # ping the health check endpoint
@@ -106,7 +112,7 @@ curl http://localhost:3000/health
 If the application fails to start, check for these common configuration issues:
 
 |**Issues**|**Description**|**Solution**|
-|--------------|--------------|
+|----------|---------------|------------|
 |**Port already in use**|Port `3000` is occupied.|Change the `PORT` variable in your `.env` file to an available port.|
 |**Database connection failed**|The API cannot reach the PostgreSQL server.|Ensure PostgreSQL is running and your `DB_URL` in the `.env` file matches your local credentials.|
 |**Missing environment variables**|The server crashes because a required key is undefined.|Verify that your `.env` file contains all the variables listed in the `.env.example` template.|
@@ -120,14 +126,13 @@ If the application fails to start, check for these common configuration issues:
 This allows you to manually run `npm run dev` inside the container to see the exact error message that is causing the shutdown.
 
 ## Security recommendations
-* Ensure all requests are sent in HTTPS (Secure HTTP).
-* Ensure you configure firewall.
-* Ensure secure secrets management.
-* Avoid hardcoding credentials.
+* Enforce HTTPS transport layers globally to encrypt data in transit.
+* Configure host-level firewalls to isolate database access from public web requests.
+* Never commit the production `.env` file into open-source version control tracking.
+* Never hardcode credentials.
 
 ## Next steps
 Now that the TaskFlow API is deployed:
 
-* Check the [**API docs**](apireference.md) to know more about the API.
-* Check the [**monitoring docs**](authentication.md) to learn how to track the availability, performance, functionality, and security of the API.
-* For further reading, go through the [**scaling/deployment resources**](deployment.md).
+* Review the [**API documentation**](apireference.md) to explore the system's available end-point layouts.
+* Read the [**Monitoring and logging guide**](authentication.md) to implement metric tracing for system infrastructure.
