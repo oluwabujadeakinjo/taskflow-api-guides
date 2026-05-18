@@ -41,7 +41,7 @@ The following operational guides are currently in progress:
 - [Scaling infrastructure]()
 - [Incident response procedures]()
 - [Backup and recovery workflows]()
-- [Release management documentation]()
+- [Release management documentation](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/deployment/release-management.md)
 
 # Technologies covered
 - Node.js
