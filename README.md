@@ -35,6 +35,14 @@ Explains how to monitor API health, inspect logs, diagnose failures, and identif
 
 ---
 
+## Upcoming documentation
+The following operational guides are currently in progress:
+- [CI/CD automation]()
+- [Scaling infrastructure]()
+- [Incident response procedures]()
+- [Backup and recovery workflows]()
+- [Release management documentation]()
+
 # Technologies covered
 - Node.js
 - PostgreSQL
