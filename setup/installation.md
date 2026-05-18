@@ -82,7 +82,7 @@ curl http://localhost:3000/health
 If the application fails to start, check the table below for common configuration issues:
 
 |**Description**|**Root cause**|**Solution**|
-|---------=-----|----------------|------------|
+|---------------|----------------|------------|
 |**Port already in use**|Port `3000` is occupied|Change the `PORT` variable in your `.env` file to an available port.|
 |**Database connection failed**|The server cannot connect with the PostgreSQL background process|Ensure PostgreSQL is running and your `DB_URL` in the `.env` file matches your local credentials.|
 |**Missing environment variables**|The process crashes on launch|If the server fails to start, verify that your `.env` file contains all the variables listed in the `.env.example` template.|
