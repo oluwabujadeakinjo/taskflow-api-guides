@@ -40,7 +40,7 @@ The following operational guides are currently in progress:
 - [CI/CD automation](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/deployment/ci-cd-automation.md)
 - [Scaling infrastructure](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/deployment/scaling-infrastructure.md)
 - [Incident response procedures]()
-- [Backup and recovery workflows]()
+- [Backup and recovery workflows](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/operations/backup-and-recovery.md)
 - [Release management documentation](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/deployment/release-management.md)
 
 # Technologies covered
