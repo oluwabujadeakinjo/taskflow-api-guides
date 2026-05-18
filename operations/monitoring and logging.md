@@ -142,5 +142,5 @@ Use the following matrix to diagnose and resolve issues:
 - Monitor failed login attempts.
 
 ## Next steps
-- Review the [**Production deployment guide**](./deployment.md) to manage system deployments.
-- Read the [**Developer onboarding guide**](./scaling.md) to initialize your local developer station.
+- Review the [**Production deployment guide**](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/deployment/deployment.md) to manage system deployments.
+- Read the [**Developer onboarding guide**](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/onboarding/Onboarding%20Docs.md) to initialize your local developer station.
