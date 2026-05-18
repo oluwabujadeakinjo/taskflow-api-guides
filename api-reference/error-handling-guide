@@ -1,0 +1,105 @@
+# Error handling for TaskFlow API
+This reference guide outlines the standardized error response framework used by the TaskFlow API. When an API request fails due to client error or server issues, the platform returns a predictable HTTP status code and a JSON payload to help developers diagnose and resolve the issue.
+
+## Error format schema
+All error responses from the TaskFlow API utilize a uniform JSON object containing three core properties:
+
+|**Property**|**Type**|**Description**|
+|------------|--------|---------------|
+|`status`|integer|The RFC-compliant HTTP status code representing the failure category.|
+|`errer`|string|A unique, snake_case machine-readable string identifying the specific error type.|
+|`message`|string|A human-readable description explaining why the failure occurred and how to resolve it.|
+
+## Error status codes summary
+Use this summary table for quick reference to standard API error responses:
+
+|**Status code**|**Error identifier**|**Primary cause**|
+|---------------|--------------------|-----------------|
+|`401 Bad Request`|`missing_parameter`|A required property is absent from the payload body.|
+|`401 Unauthorized`|`invalid_token`/`token_expired`|Access credentials are missing, incorrect, or expired.|
+|`403 Forbidden`|`insufficient_permissions`|The authenticated user lacks permission to access the resource.|
+|`404 Not Found`|`resource_not_found`|The requested task, project, or user ID does not exist.|
+|`422 Unprocessable Entity`|`validation_failed`|The request syntax is correct, but field data values are invalid.|
+|`500 Internal Server Error`|`server_error`|An unexpected service exception occurred on the hosting server.|
+
+## Error details and response payloads
+### Missing parameter (400 Bad Request)
+Returned when a required property is omitted from a `POST` or `PUT` request body.
+
+```JSON
+{
+    "status": 400,
+    "error": "missing_parameter",
+    "message": "A required field is missing. Ensure all required fields are included and try again."
+}
+```
+
+### Invalid token (401 Unauthorized)
+Returned when the request lacks an `Authorization` header, or the provided bearer token is malformed.
+
+```JSON
+{
+    "status": 401,
+    "error": "invalid_token",
+    "message": "The access token provided is invalid or malformed. Verify your Authorization header format."
+}
+```
+
+### Token expired (401 Unauthorized)
+Returned when the provided access token has passed its one-hour security lifetime limit.
+
+```JSON
+{
+    "status": 401,
+    "error": "token_expired",
+    "message": "The access token has expired. Generate a new token and try again."
+}
+```
+
+### Insufficient permissions (403 Forbidden)
+Returned when a user attempts to view, modify, or delete a task or project owned by another organization tier without authorization.
+
+```JSON
+{
+    "status": 403,
+    "error": "insufficient_permissions",
+    "message": "You do not have permission to modify this resource."
+}
+```
+
+### Resource not found (404 Not Found)
+Returned when the path parameter ID provided does not match any existing record inside the PostgreSQL database tracking tables.
+
+```JSON
+{
+    "status": 404,
+    "error": "resource_not_found",
+    "message": "The requested task ID could not be found. Verify the unique task name and try again."
+}
+```
+
+### Validation failed (422 Unprocessable Entity)
+Returned when request fields fail logical constraints, such as passing an unrecognized state to a task status updater route.
+
+```JSON
+{
+    "status": 422,
+    "error": "validation_failed",
+    "message": "The status parameter doesn't match one of the allowed values."
+}
+```
+
+### Internal server error (500)
+Returned when the application server encounters an unexpected runtime exception, unhandled promise rejection, or database connection drop.
+
+```JSON
+{
+    "status": 500,
+    "error": "server_error",
+    "message": "An unexpected error occurred. Please try again later."
+}
+```
+
+## Next steps
+- Review the [**API reference documentation**]() to evaluate success formats and payload expectations.
+- Read the [**Monitoring and logging guide**]() to learn how to track these error states inside production log streams.
