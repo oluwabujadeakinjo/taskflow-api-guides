@@ -60,8 +60,6 @@ Operational workflow requirements:
 - Active network access for pulling remote dependency structures
 - A code editor or integrated development environment (IDE)
 
----
-
 ## Install and configure TaskFlow API locally
 
 ### Step 1: Clone the repository
@@ -70,13 +68,13 @@ Clone the TaskFlow API repository from your version control workspace:
 ```Bash
 git clone https://github.com/example/taskflow-api.git
 ```
----
+
 Move into the project directory:
 
 ```Bash
 cd taskflow-api
 ```
----
+
 ### Step 2: Install dependencies
 Install all required project dependencies:
 
@@ -257,7 +255,7 @@ git checkout -b feature/task-filtering
 |**Resource**|**Purpose**|
 |------------|-----------|
 |[API reference documentation]()|Endpoint specifications|
-|[Deploypment guide]()|Production deployment workflow|
+|[Deploypment guide](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/deployment/deployment.md)|Production deployment workflow|
 |[Monitoring guide]()|Logging and observability workflows|
 
 ## Next steps
@@ -269,8 +267,6 @@ Now that you have complet onboarding, you should be able to:
 - troubleshoot common operational issues.
 
 Recommended next topics:
-- [deployment workflows]();
-- [monitoring and observability]();
 - [scaling infrastructure]();
 - [CI/CD automation]();
 - [incident response procedures]().
