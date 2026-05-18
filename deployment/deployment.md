@@ -123,7 +123,7 @@ If the application fails to start, check for these common configuration issues:
 ``` Bash
  docker run -it --entrypoint /bin/sh taskflow-api
 ```
-This allows you to manually run `npm run dev` inside the container to see the exact error message that is causing the shutdown.
+> This allows you to manually run `npm run dev` inside the container to see the exact error message that is causing the shutdown.
 
 ## Security recommendations
 * Enforce HTTPS transport layers globally to encrypt data in transit.
@@ -135,4 +135,4 @@ This allows you to manually run `npm run dev` inside the container to see the ex
 Now that the TaskFlow API is deployed:
 
 * Review the [**API documentation**](apireference.md) to explore the system's available end-point layouts.
-* Read the [**Monitoring and logging guide**](authentication.md) to implement metric tracing for system infrastructure.
+* Read the [**Monitoring and logging guide**](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/operations/monitoring%20and%20logging.md) to implement metric tracing for system infrastructure.
