@@ -101,5 +101,5 @@ Returned when the application server encounters an unexpected runtime exception,
 ```
 
 ## Next steps
-- Review the [**API reference documentation**]() to evaluate success formats and payload expectations.
+- Review the [**API reference documentation**](https://github.com/oluwabujadeakinjo/taskflow-api-guides/blob/main/api-reference/task-endpoints.md) to evaluate success formats and payload expectations.
 - Read the [**Monitoring and logging guide**]() to learn how to track these error states inside production log streams.
